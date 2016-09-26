@@ -5,7 +5,7 @@
 module:testrunner
 
 GET     /                                       App.Index
-GET		/registerNewUser						Game.RegisterNewUser										
+POST	/registerNewUser						Game.RegisterNewUser
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
