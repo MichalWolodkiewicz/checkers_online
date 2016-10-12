@@ -35,6 +35,14 @@ func (g Game) RegisterNewUser() revel.Result {
 		g.Response.Status = 400
 		return g.RenderJson(getErrorResponseBody("Invalid input. 'name' field is required."))
 	}
+	if(len(name) < 1) {
+		g.Response.Status = 400
+		return g.RenderJson(getErrorResponseBody("Invalid input. 'name' is empty."))
+	}
 	defer g.Request.Body.Close()
 	return g.RenderJson(getIdResponseBody(g.GameService.RegisterNewUser(name)))
+}
+
+func (g Game) Index() revel.Result {
+	return g.Render()
 }

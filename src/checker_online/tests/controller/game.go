@@ -38,6 +38,14 @@ func (t *GameControllerTest) TestResponseWhenInputDoesNotContainNameField() {
 	t.AssertContains("\"message\": \"Invalid input. 'name' field is required.")
 }
 
+func (t *GameControllerTest) TestResponseWhenInputContainEmptyName() {
+	emptyRequestBody := strings.NewReader("{\"name\":\"\"}")
+	t.Post("/registerNewUser", "application/json", emptyRequestBody)
+	t.AssertStatus(400)
+	t.AssertContentType("application/json; charset=utf-8")
+	t.AssertContains("\"message\": \"Invalid input. 'name' is empty.")
+}
+
 func (t *GameControllerTest) After() {
 	println("Tear down controller test")
 }
