@@ -5,6 +5,7 @@
 module:testrunner
 
 GET     /                                       Game.Index
+GET     /registerView                           Game.RegisterView
 POST	/registerNewUser						Game.RegisterNewUser
 
 # Ignore favicon requests

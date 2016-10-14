@@ -43,6 +43,10 @@ func (g Game) RegisterNewUser() revel.Result {
 	return g.RenderJson(getIdResponseBody(g.GameService.RegisterNewUser(name)))
 }
 
+func (g Game) RegisterView() revel.Result {
+	return g.Render()
+}
+
 func (g Game) Index() revel.Result {
 	return g.Render()
 }

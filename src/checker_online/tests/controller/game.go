@@ -46,6 +46,12 @@ func (t *GameControllerTest) TestResponseWhenInputContainEmptyName() {
 	t.AssertContains("\"message\": \"Invalid input. 'name' is empty.")
 }
 
+func (t *GameControllerTest) TestResponseWithRegisterView() {
+	t.Get("/registerView")
+	t.AssertStatus(200)
+	t.AssertContentType("application/html; charset=utf-8")
+}
+
 func (t *GameControllerTest) After() {
 	println("Tear down controller test")
 }
