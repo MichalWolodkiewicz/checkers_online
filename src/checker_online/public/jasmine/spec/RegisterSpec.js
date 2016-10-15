@@ -66,4 +66,12 @@ describe('register view ', function () {
         expect(GAME_EVENTS.sendEvent.calls.mostRecent().args[0]).toEqual('USER_REGISTERED');
     });
 
+    it('should show message when register request fail', function () {
+        expect($('#serverErrorAlert').is(':visible')).toBeFalsy();
+        spyOn($, 'ajax').and.callFake(function(e) {e.error({});});
+        $('#playerNameForm').find('[name=name]').val('john');
+        $('#playerNameForm').submit();
+        expect($('#serverErrorAlert').is(':visible')).toBeTruthy();
+    });
+
 });

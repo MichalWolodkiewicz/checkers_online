@@ -18,7 +18,9 @@ var registerCallbacks = {
         };
         GAME_EVENTS.sendEvent('USER_REGISTERED', userData);
     },
-    error: function(e) {}
+    error: function(e) {
+        $('#serverErrorAlert').show();
+    }
 };
 
 jQuery(function() {

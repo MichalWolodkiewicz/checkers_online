@@ -1,4 +1,4 @@
-var GAME_EVENTS = {
+const GAME_EVENTS = {
     sendEvent: function (eventName, data) {
         if (eventName === 'USER_REGISTERED') {
             USER_DATA.setId(data.id);
@@ -9,18 +9,32 @@ var GAME_EVENTS = {
     }
 };
 
-var VIEW_MANAGER = {
+const VIEW_MANAGER = {
+    showSpinnerWhileLoadingView: true,
     downloadAndShowView: function (viewName) {
-        $.get('/gameView').success(function (html) {
+        if(this.showSpinnerWhileLoadingView) {
+            this.showSpinner();
+        }
+        $.get('/'+viewName).success(function (html) {
             $('#mainContainer').append(html);
+            VIEW_MANAGER.hideSpinner();
         });
     },
     removeView: function (viewId) {
         $('#mainContainer').find('#'+viewId).remove();
+    },
+    showSpinnerOnLoad: function(show) {
+        this.showSpinnerWhileLoadingView = show;
+    },
+    showSpinner: function() {
+        $('.spinnerContainer').show();
+    },
+    hideSpinner: function() {
+        $('.spinnerContainer').fadeOut(1500);
     }
 };
 
-var USER_DATA = {
+const USER_DATA = {
     userId: -1,
     userName: '',
     setId: function (id) {
@@ -30,5 +44,3 @@ var USER_DATA = {
         this.userName = name;
     }
 };
-
-
