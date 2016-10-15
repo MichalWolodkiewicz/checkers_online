@@ -1,0 +1,16 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<div class="spinner spinnerContainer"></div>
+<header class="jumbotron" style="background-color:#A9F16C">
+    <div class="container">
+        <div class="row">
+            <h1>Checkers online</h1>
+        </div>
+        <div class="row" id="mainContainer">
+            {{template "Game/RegisterView.html" .}}
+        </div>
+    </div>
+</header>
+
+{{template "footer.html" .}}

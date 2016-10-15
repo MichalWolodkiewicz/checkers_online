@@ -1,0 +1,57 @@
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+.spinner {
+    position: relative;
+    height: 200px;
+    background: #BCE27F;
+}
+
+.spinner:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 150px;
+    border-radius: 10px;
+    border: solid 10px #96B566;
+    transform: translate(-50%, -50%);
+}
+
+.spinner:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    z-index: 999;
+    border-radius: 50%;
+    background: #F6FF97;
+    animation-name: spinner;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: translate(-72.5px, -7.5px);
+    }
+    100% {
+        transform: translate(58.5px, -7.5px);
+    }
+}
+
+.spinnerContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: none;
+    background-color: white;
+}
