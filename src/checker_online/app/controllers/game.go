@@ -47,6 +47,10 @@ func (g Game) RegisterView() revel.Result {
 	return g.Render()
 }
 
+func (g Game) GameView() revel.Result {
+	return g.Render()
+}
+
 func (g Game) Index() revel.Result {
 	return g.Render()
 }
